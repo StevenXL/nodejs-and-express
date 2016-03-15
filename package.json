@@ -2,7 +2,7 @@
   "name": "nodejs-and-express-app",
   "version": "1.0.0",
   "description": "Following along with the Building Web Applications with Node.js and Express 4.0 tutorial from PluralSight.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
