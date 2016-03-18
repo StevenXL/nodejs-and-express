@@ -4,7 +4,7 @@
   "description": "Following along with the Building Web Applications with Node.js and Express 4.0 tutorial from PluralSight.",
   "main": "app.js",
   "scripts": {
-    "start": "node ./dev/server.js",
+    "start": "node server.js",
     "dev": "webpack --progress --colors --watch -d",
     "build": "webpack --progress --colors -p",
     "test": "echo \"Error: no test specified\" && exit 1"
