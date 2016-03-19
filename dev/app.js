@@ -1,3 +1,3 @@
-let msg = "hello"
+let msg = "hello";
 
 alert(msg);
