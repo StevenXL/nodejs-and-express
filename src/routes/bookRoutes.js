@@ -15,16 +15,25 @@ const router = function(nav) {
       });
     });
 
-  bookRouter.route("/:id").get((req, res) => {
-    db.one("select * from books where id = $1", req.params.id)
-      .then((book) => {
-        res.render("bookView", {
-          "title": "Hello from EJS Render",
-          "nav": nav,
-          "book": book
+  bookRouter.route("/:id")
+    .all((req, res, next) => {
+      db
+        .one("select * from books where id = $1", req.params.id)
+        .then((book) => {
+          req.book = book;
+          next();
+        })
+        .catch((err) => {
+          res.status(404).send("Cannot Find.");
         });
+      })
+    .get((req, res) => {
+      res.render("bookView", {
+        "title": "Hello from EJS Render",
+        "nav": nav,
+        "book": req.book
       });
-  });
+    });
 
   return bookRouter;
 };

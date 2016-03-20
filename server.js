@@ -1,6 +1,6 @@
 const express = require("express");
 
-const nav = [{"Link": "/Books","Text": "Book"}, {"Link": "/Authors", "Text": "Author"}];
+const nav = [{"Link": "/Books","Text": "Books"}, {"Link": "/Authors", "Text": "Authors"}];
 const bookRouter = require("./src/routes/bookRoutes")(nav);
 
 const app = express();
