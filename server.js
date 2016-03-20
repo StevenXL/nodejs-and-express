@@ -1,13 +1,17 @@
-var express = require('express');
+const express = require("express");
+const handlebars = require("express-handlebars");
 
 const app = express();
 const port = 5000;
 
-app.use(express.static('public'));
-app.use(express.static('src/views'));
+app.use(express.static("public"));
+app.set("views", "./src/views");
+
+app.engine(".hbs", handlebars({"extname": ".hbs"}));
+app.set("view engine", ".hbs");
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.render("index", {"title": "Hello From Render", "list": ["Ada", "Steven", "Charles"]});
 });
 
 app.get("/books", (req, res) => {
