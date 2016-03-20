@@ -1,11 +1,7 @@
 const express = require("express");
 
-const pgp = require("pg-promise")({});
-const db = pgp("postgres://postgres@localhost:5432/library_app");
-
-var nav = [{"Link": "/Books","Text": "Book"}, {"Link": "/Authors", "Text": "Author"}];
-var bookRouter = require("./src/routes/bookRoutes")(nav);
-
+const nav = [{"Link": "/Books","Text": "Book"}, {"Link": "/Authors", "Text": "Author"}];
+const bookRouter = require("./src/routes/bookRoutes")(nav);
 
 const app = express();
 const port = 5000;

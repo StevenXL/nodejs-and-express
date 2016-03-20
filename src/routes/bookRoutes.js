@@ -1,37 +1,29 @@
-const express = require('express');
+const express = require("express");
 const bookRouter = express.Router();
+const db = require("../db/database");
 
-var router = function(nav) {
-  const books = [
-    {
-      "title": "War and Peace",
-      "genre": "Historical Fiction",
-      "author": "Lev Nikolayevich Tolstoy",
-      "read": false
-    }, {
-      "title": "Les Miserables",
-      "genre": "Historical Fiction",
-      "author": "Victor Hugo",
-      "read": false
-    }
-  ];
+const router = function(nav) {
 
   bookRouter.route("/").get((req, res) => {
-    res.render("bookListView", {
-      "title": "Hello From EJS Render",
-      "nav": nav,
-      "books": books
+    db.query("select * from books")
+      .then((books) => {
+        res.render("bookListView", {
+          "title": "Hello From EJS Render",
+          "nav": nav,
+          "books": books
+        });
+      });
     });
-  });
 
   bookRouter.route("/:id").get((req, res) => {
-    const id = req.params.id
-
-    res.render("bookView", {
-      "title": "Hello From EJS Render",
-      "nav": nav,
-      "book": books[id]
-    });
+    db.one("select * from books where id = $1", req.params.id)
+      .then((book) => {
+        res.render("bookView", {
+          "title": "Hello from EJS Render",
+          "nav": nav,
+          "book": book
+        });
+      });
   });
 
   return bookRouter;
