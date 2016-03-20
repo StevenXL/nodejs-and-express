@@ -48,10 +48,6 @@
 /***/ function(module, exports) {
 
 	"use strict";
-	
-	var msg = "hello";
-	
-	alert(msg);
 
 /***/ }
 /******/ ]);
