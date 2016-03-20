@@ -1,5 +1,8 @@
 const express = require("express");
-const bookRouter = require("./src/routes/bookRoutes");
+
+var nav = [{"Link": "/Books","Text": "Book"}, {"Link": "/Authors", "Text": "Author"}];
+var bookRouter = require("./src/routes/bookRoutes")(nav);
+
 
 const app = express();
 const port = 5000;
@@ -8,6 +11,7 @@ app.use(express.static("public"));
 app.set("views", "./src/views");
 
 app.set("view engine", "ejs");
+
 
 app.use("/Books", bookRouter);
 
