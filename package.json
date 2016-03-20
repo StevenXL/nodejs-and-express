@@ -12,6 +12,7 @@
   "author": "Steven Leiva",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.4.1",
     "express": "^4.13.4"
   },
   "devDependencies": {
